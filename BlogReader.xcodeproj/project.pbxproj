@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34A754541B0E1C4F00053E61 /* BlogPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A754531B0E1C4F00053E61 /* BlogPost.m */; };
 		D82534A01B0C19CA0024C945 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D825349F1B0C19CA0024C945 /* TableViewController.m */; };
 		D88645251B0C16DA00D13844 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D88645241B0C16DA00D13844 /* main.m */; };
 		D88645281B0C16DA00D13844 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D88645271B0C16DA00D13844 /* AppDelegate.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34A754521B0E1C4F00053E61 /* BlogPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlogPost.h; sourceTree = "<group>"; };
+		34A754531B0E1C4F00053E61 /* BlogPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlogPost.m; sourceTree = "<group>"; };
 		D825349E1B0C19CA0024C945 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		D825349F1B0C19CA0024C945 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		D886451F1B0C16DA00D13844 /* BlogReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlogReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +88,8 @@
 				D88645271B0C16DA00D13844 /* AppDelegate.m */,
 				D825349E1B0C19CA0024C945 /* TableViewController.h */,
 				D825349F1B0C19CA0024C945 /* TableViewController.m */,
+				34A754521B0E1C4F00053E61 /* BlogPost.h */,
+				34A754531B0E1C4F00053E61 /* BlogPost.m */,
 				D886452C1B0C16DA00D13844 /* Main.storyboard */,
 				D886452F1B0C16DA00D13844 /* Images.xcassets */,
 				D88645311B0C16DA00D13844 /* LaunchScreen.xib */,
@@ -222,6 +227,7 @@
 				D88645281B0C16DA00D13844 /* AppDelegate.m in Sources */,
 				D82534A01B0C19CA0024C945 /* TableViewController.m in Sources */,
 				D88645251B0C16DA00D13844 /* main.m in Sources */,
+				34A754541B0E1C4F00053E61 /* BlogPost.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
