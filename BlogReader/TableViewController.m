@@ -30,6 +30,7 @@
     for (NSDictionary *indBlogPostDictionary in blogPostsDictionaries) {
         BlogPost *blogPost = [BlogPost blogPostWithTitle:[indBlogPostDictionary objectForKey:@"title"]];
         blogPost.author = [indBlogPostDictionary objectForKey:@"author"];
+        blogPost.thumbnailURL = [NSURL URLWithString:[indBlogPostDictionary objectForKey:@"thumbnail"]];
         
         [self.blogPosts addObject:blogPost];
     }
@@ -60,8 +61,14 @@
     
     BlogPost *currentBlogPost = [self.blogPosts objectAtIndex:indexPath.row];
     
+    NSData *imageData = [NSData dataWithContentsOfURL:currentBlogPost.thumbnailURL];
+    UIImage *image = [UIImage imageWithData:imageData];
+    
+    cell.imageView.image = image;
     cell.textLabel.text = currentBlogPost.title;
     cell.detailTextLabel.text = currentBlogPost.author;
+    
+    
     
     return cell;
 }
