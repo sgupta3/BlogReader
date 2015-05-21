@@ -31,13 +31,10 @@
         BlogPost *blogPost = [BlogPost blogPostWithTitle:[indBlogPostDictionary objectForKey:@"title"]];
         blogPost.author = [indBlogPostDictionary objectForKey:@"author"];
         blogPost.thumbnailURL = [NSURL URLWithString:[indBlogPostDictionary objectForKey:@"thumbnail"]];
+        blogPost.datePublished = [indBlogPostDictionary objectForKey:@"date"];
         
         [self.blogPosts addObject:blogPost];
     }
-    
-    
-    
-    //self.blogPosts = [dataDictionary objectForKey:@"posts"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,7 +63,9 @@
     
     cell.imageView.image = image;
     cell.textLabel.text = currentBlogPost.title;
-    cell.detailTextLabel.text = currentBlogPost.author;
+    NSString *detailFormattedTextLabel = [NSString stringWithFormat:@"%@ | %@",currentBlogPost.author,currentBlogPost.formattedDate];
+    cell.detailTextLabel.text = detailFormattedTextLabel;
+    cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     
     
     
