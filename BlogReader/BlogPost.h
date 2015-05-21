@@ -13,8 +13,10 @@
 @property(nonatomic,strong) NSString *title;
 @property(nonatomic,strong) NSString *author;
 @property(nonatomic,strong) NSURL *thumbnailURL;
+@property(nonatomic,strong) NSString *datePublished;
 
 - (id) initWithTitle: (NSString *)title;
+- (NSString *) formattedDate;
 + (id) blogPostWithTitle: (NSString *)title;
 
 @end

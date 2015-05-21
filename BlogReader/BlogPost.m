@@ -22,6 +22,16 @@
     return [[self alloc] initWithTitle:title];
 }
 
+- (NSString *) formattedDate {
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date = [dateFormatter dateFromString:self.datePublished];
+    [dateFormatter setDateFormat:@"EE MMM,dd"];
+    
+    return [dateFormatter stringFromDate:date];
+}
+
 
 
 @end
