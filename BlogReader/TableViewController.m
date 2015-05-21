@@ -7,6 +7,7 @@
 //
 
 #import "TableViewController.h"
+#import "BlogPost.h"
 
 @interface TableViewController ()
 
@@ -22,7 +23,20 @@
     NSError *error = nil;
     NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:jsonBlogData options:0 error:&error];
     
-    self.blogPosts = [dataDictionary objectForKey:@"posts"];
+    self.blogPosts = [NSMutableArray array];
+    
+    NSArray *blogPostsDictionaries = [dataDictionary objectForKey:@"posts"];
+    
+    for (NSDictionary *indBlogPostDictionary in blogPostsDictionaries) {
+        BlogPost *blogPost = [BlogPost blogPostWithTitle:[indBlogPostDictionary objectForKey:@"title"]];
+        blogPost.author = [indBlogPostDictionary objectForKey:@"author"];
+        
+        [self.blogPosts addObject:blogPost];
+    }
+    
+    
+    
+    //self.blogPosts = [dataDictionary objectForKey:@"posts"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,10 +58,10 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
     
-    NSDictionary *currentBlogPost = [self.blogPosts objectAtIndex:indexPath.row];
+    BlogPost *currentBlogPost = [self.blogPosts objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [currentBlogPost valueForKey:@"title"];
-    cell.detailTextLabel.text = [currentBlogPost valueForKey:@"author"];
+    cell.textLabel.text = currentBlogPost.title;
+    cell.detailTextLabel.text = currentBlogPost.author;
     
     return cell;
 }
