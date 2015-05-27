@@ -33,6 +33,8 @@
         NSString *thumbnailURLString = [indBlogPostDictionary objectForKey:@"thumbnail"];
         if([thumbnailURLString isKindOfClass:[NSString class]]) {
             blogPost.thumbnailURL = [NSURL URLWithString:[indBlogPostDictionary objectForKey:@"thumbnail"]];
+        } else {
+            blogPost.thumbnailURL = [NSURL URLWithString:@"http://lorempixel.com/400/200/technics/"];
         }
         
         blogPost.datePublished = [indBlogPostDictionary objectForKey:@"date"];
@@ -64,6 +66,9 @@
     
     NSData *imageData = [NSData dataWithContentsOfURL:currentBlogPost.thumbnailURL];
     UIImage *image = [UIImage imageWithData:imageData];
+    CGSize thumbnailSize = CGSizeMake(50, 50);
+    image = [self imageWithImage:image scaledToSize:thumbnailSize];
+    
     
     cell.imageView.image = image;
     cell.textLabel.text = currentBlogPost.title;
@@ -74,6 +79,18 @@
     
     
     return cell;
+}
+
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 /*
