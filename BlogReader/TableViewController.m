@@ -30,7 +30,11 @@
     for (NSDictionary *indBlogPostDictionary in blogPostsDictionaries) {
         BlogPost *blogPost = [BlogPost blogPostWithTitle:[indBlogPostDictionary objectForKey:@"title"]];
         blogPost.author = [indBlogPostDictionary objectForKey:@"author"];
-        blogPost.thumbnailURL = [NSURL URLWithString:[indBlogPostDictionary objectForKey:@"thumbnail"]];
+        NSString *thumbnailURLString = [indBlogPostDictionary objectForKey:@"thumbnail"];
+        if([thumbnailURLString isKindOfClass:[NSString class]]) {
+            blogPost.thumbnailURL = [NSURL URLWithString:[indBlogPostDictionary objectForKey:@"thumbnail"]];
+        }
+        
         blogPost.datePublished = [indBlogPostDictionary objectForKey:@"date"];
         
         [self.blogPosts addObject:blogPost];
