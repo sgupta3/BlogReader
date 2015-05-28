@@ -30,14 +30,15 @@
     for (NSDictionary *indBlogPostDictionary in blogPostsDictionaries) {
         BlogPost *blogPost = [BlogPost blogPostWithTitle:[indBlogPostDictionary objectForKey:@"title"]];
         blogPost.author = [indBlogPostDictionary objectForKey:@"author"];
+        blogPost.url = [NSURL URLWithString:[indBlogPostDictionary objectForKey:@"url"]];
+        blogPost.datePublished = [indBlogPostDictionary objectForKey:@"date"];
+        
         NSString *thumbnailURLString = [indBlogPostDictionary objectForKey:@"thumbnail"];
         if([thumbnailURLString isKindOfClass:[NSString class]]) {
             blogPost.thumbnailURL = [NSURL URLWithString:[indBlogPostDictionary objectForKey:@"thumbnail"]];
         } else {
             blogPost.thumbnailURL = [NSURL URLWithString:@"http://lorempixel.com/400/200/technics/"];
         }
-        
-        blogPost.datePublished = [indBlogPostDictionary objectForKey:@"date"];
         
         [self.blogPosts addObject:blogPost];
     }
@@ -79,6 +80,16 @@
     
     
     return cell;
+}
+
+#pragma mark Table view delegate
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    BlogPost *currentBlogPost = [self.blogPosts objectAtIndex:indexPath.row];
+    
+    UIApplication *application = [UIApplication sharedApplication];
+    [application openURL:currentBlogPost.url];
+
 }
 
 

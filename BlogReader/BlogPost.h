@@ -14,6 +14,7 @@
 @property(nonatomic,strong) NSString *author;
 @property(nonatomic,strong) NSURL *thumbnailURL;
 @property(nonatomic,strong) NSString *datePublished;
+@property(nonatomic,strong) NSURL *url;
 
 - (id) initWithTitle: (NSString *)title;
 - (NSString *) formattedDate;
